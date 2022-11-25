@@ -1,0 +1,49 @@
+{
+  "name": "Yourssu_Incubating",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --open --hot",
+    "build": "webpack",
+    "lint:eslint": "eslint './src/**/*.{ts,tsx}'",
+    "lint:prettier": "prettier --check './src/**/*.{ts,tsx}'",
+    "lint-fix:eslint": "eslint --fix './src/**/*.{.ts,tsx}'",
+    "lint-fix:prettier": "prettier --write './src/**/*.{.ts,tsx}'"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/clean-webpack-plugin": "^0.1.3",
+    "@types/node": "^18.11.9",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "@types/styled-components": "^5.1.26",
+    "@types/webpack": "^5.28.0",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "babel-loader": "^9.1.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "eslint": "^8.27.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "^2.7.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
+  }
+}

@@ -1,0 +1,29 @@
+{
+    "root": true,
+    "env": { "browser": true, "es6": true },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": { "project": ["./tsconfig.json"] },
+    "plugins": [
+      "@typescript-eslint",
+      "import"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:import/recommended",
+      "prettier"
+    ],
+    "settings": {
+      "import/parsers": {
+        "@typescript-eslint/parser": [".ts", ".tsx"]
+      },
+      "import/resolver": {
+        "typescript": {
+          "project": "./tsconfig.json"
+        }
+      }
+    },
+    "rules": {
+      "no-console": "off"
+    }
+  }
