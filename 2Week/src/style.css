@@ -46,14 +46,14 @@ h1 {
   background: #fff;
 }
 
-.toto-form {
+.todo-form {
   width: 100%;
   display: flex;
   justify-content: space-between;
   gap: 20px;
 }
 
-.toto-form > input {
+.todo-form > input {
   border-radius: 8px;
   border: 1px solid rgba(18, 163, 241, 0.736);
   padding: 8px;
@@ -61,7 +61,7 @@ h1 {
   width: 100%;
 }
 
-.toto-form > button {
+.todo-form > button {
   border-radius: 8px;
   background-color: rgba(18, 163, 241, 0.736);
   border: none;
@@ -72,7 +72,7 @@ h1 {
   transition: background-color 0.2s ease-in-out;
 }
 
-.toto-form > button:hover {
+.todo-form > button:hover {
   background-color: rgba(102, 179, 220, 0.736);
 }
 
