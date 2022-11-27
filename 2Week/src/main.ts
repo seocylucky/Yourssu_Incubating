@@ -63,24 +63,37 @@ toDoForm?.addEventListener('submit', async (e) => {
         )
 })
 
-function addTask(value: String) {
+function addTask(value: string) {
     // let ul = document.querySelector<HTMLUListElement>('ul');
     let li = document.createElement('li');
-    li.innerHTML = `<li class="item"><label>${value}<span class="cancle">&times;</span></label><input class="check-Box" type="checkbox"></li>`;
+    const label = document.createElement('label');
+    label.innerText = value;
+    const span = document.createElement('span');
+    const checkInput = document.createElement('input');
+    // li.innerHTML = `<li class="item"><label>${value}<span class="cancle">&times;</span></label><input class="check-Box" type="checkbox"></li>`;
+    // toDoList?.append(li);
+
+    const id = document.querySelectorAll(".item-list li").length+1;
+    
+    li.classList.add('item');
+    span.classList.add('cancle');
+    span.innerHTML = ' &times;';
+    checkInput.type = 'checkbox';
+    label.appendChild(span);
+    li.appendChild(label);
+    li.appendChild(checkInput);
     toDoList?.append(li);
 
-    const id = document.querySelectorAll(".item-list.li").length+1;
-    const delBtn = document.querySelector<HTMLButtonElement>(".cancle");
-    const Checkinput = document.querySelector<HTMLInputElement>(".check-Box");
-    const toDoInput = taskInput!.value;
+    // const delBtn = document.querySelector<HTMLButtonElement>(".cancle");
+    // const checkInput = document.querySelector<HTMLInputElement>(".check-Box");
+    const toDoInput = taskInput?.value;
 
-    const deleteTodo: Todo = {
-        id: id
-    }
-
-    delBtn.addEventListener('click', async (e) => {
+    span.addEventListener('click', async (e) => {
         e.preventDefault();
-    
+        const deleteTodo: Todo = {
+            id: id
+        }
+
         await fetch("/todo", {
             method: "DELETE",
             headers: {
@@ -104,17 +117,15 @@ function addTask(value: String) {
             .then(res => console.log(res)
             )  
     })
-
-
-    const CheckTodo: Todo = {
-        id: id,
-        item: toDoInput,
-        status: "DONE"
-    }
     
-    Checkinput.addEventListener('click', async (e) => {
+    checkInput.addEventListener('click', async (e) => {
         e.preventDefault();
-        
+        const CheckTodo: Todo = {
+            id: id,
+            item: toDoInput,
+            status: "DONE"
+        }
+
         await fetch("/todo", {
             method: "PATCH",
             headers: {
@@ -124,7 +135,7 @@ function addTask(value: String) {
         })
         .then(res => res.json())
         .then((res) => {
-            Checkinput.checked = true;
+            checkInput.checked = true;
             console.log(res)}
     ) 
     await fetch('/todo', {
