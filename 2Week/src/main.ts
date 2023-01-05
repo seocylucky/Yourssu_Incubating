@@ -74,7 +74,7 @@ function addTask(value: string) {
     // toDoList?.append(li);
 
     const id = document.querySelectorAll(".item-list li").length+1;
-    
+
     li.classList.add('item');
     span.classList.add('cancle');
     span.innerHTML = ' &times;';
