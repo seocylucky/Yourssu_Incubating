@@ -12,7 +12,25 @@ type Db = {
 }
 
 const DB: Db = {
-  TODOS: [],
+  TODOS: [
+    {
+      id: "1",
+      item: 'Todo List를',
+      status: "NOT_DONE",
+    },
+
+    {
+      id: "2",
+      item: '자유롭게',
+      status: "NOT_DONE",
+    },
+
+    {
+      id: "3",
+      item: '추가해보세요!',
+      status: "NOT_DONE",
+    }
+  ],
 }
 
 export const handlers = [
