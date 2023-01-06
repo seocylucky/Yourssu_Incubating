@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { TodoTypes, todosState } from '../recoil/todo';
 import TodoItem from './TodoItem';
@@ -6,6 +6,17 @@ import { requestDeleteTodo, requestGetTodo, requestPatchTodo } from '../apis/ind
 
 const TodoList = () => {
   const [todos, setTodos] = useRecoilState<TodoTypes[]>(todosState);
+
+  console.log(todos)
+
+  // useEffect(() => {
+  //   requestGetTodo()
+  //   .then((res) => {
+  //     console.log(todos)
+  //     setTodos(res.data)
+  //     console.log(res.data)
+  //   }) 
+  // }, [])
 
   const onComplete = useCallback((id:string, item: string): void => {
     setTodos(todos.map((todo: TodoTypes) => {
@@ -39,14 +50,14 @@ const TodoList = () => {
         console.log(err);
     })
 
-    requestGetTodo()
-    .then((res) => {
-      console.log(res.data)
-      console.log(todos);
-  })
-    .catch((err) => {
-      console.log(err);
-  })
+  //   requestGetTodo()
+  //   .then((res) => {
+  //     console.log(res.data)
+  //     console.log(todos);
+  // })
+  //   .catch((err) => {
+  //     console.log(err);
+  // })
 
   }, [setTodos, todos]);
 

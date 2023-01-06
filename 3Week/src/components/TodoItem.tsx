@@ -53,7 +53,9 @@ const TodoItem = ({
                 </div>
                 <div className='flex items-center relative'>
                     {/* <FaRegEdit className='fill-blue-500' onClick={onModify} /> */}
-                    <MdClose className='ml-2 fill-red-500' onClick={() => {if(id !== undefined) onDelete(id)}} />
+                    <MdClose className='ml-2 fill-red-500' 
+                             onClick={(e) => {e.preventDefault(); if(id !== undefined) onDelete(id)}}
+                    />
                 </div>
             </li>
             <div className='text-black'>_________________________________________</div>

@@ -15,25 +15,6 @@ const ToDoInput = () => {
   const [isInput, setIsInput] = useState(''); 
 
   const addTodo = useCallback((): void => {
-    const nextId: string = (todos.length + 1).toString();
-
-    const todoInput: InputTodo = {
-      id: nextId,
-      item,
-      status: "NOT_DONE",
-    };
-
-    requestPost(item)
-    .then((res) => {
-        console.log(res.data)
-        console.log(todos)
-    })
-    .catch((err) => {
-        console.log(err);
-    })
-
-    setTodos([...todos, todoInput]);
-    setItems('');
 
   }, [item, setItems, setTodos, todos]);
 
@@ -48,7 +29,32 @@ const ToDoInput = () => {
   }, [addTodo]);
 
   return (
-    <div className='flex'>
+    <form className='flex'
+          onSubmit={(e) => {
+              e.preventDefault();
+
+              const nextId: string = (todos.length + 1).toString();
+
+              const todoInput: InputTodo = {
+                id: nextId,
+                item,
+                status: "NOT_DONE",
+              };
+
+              if(todoInput.status !== undefined){
+              requestPost(item, todoInput?.status)
+              .then((res) => {    
+                  console.log(res.data)
+                  console.log(todos)
+              })
+              .catch((err) => {
+                  console.log(err);
+              })
+          
+              setTodos([...todos, todoInput]);
+              setItems('');
+          }}}
+    >
         <input
             className='w-80 p-2 border-2 border-gray-400 rounded-md bg-white text-black'
             placeholder='Write your ToDo...'
@@ -58,10 +64,11 @@ const ToDoInput = () => {
             onKeyPress={onKeyDown}
         />
         <button
-            className='ml-1'
+            className='ml-1 bg-black'
+            type='submit'
             onClick={addTodo}
         >Add</button>
-    </div>
+    </form>
   )
 }
 

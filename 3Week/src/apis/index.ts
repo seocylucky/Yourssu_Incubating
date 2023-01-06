@@ -1,14 +1,16 @@
 import axios from "axios";
-import { TodoTypes } from '../recoil/todo';
+import { useRecoilState } from "recoil";
+import { TodoTypes, todosState } from '../recoil/todo';
 
-export const requestPost = async (item: string) => {
+export const requestPost = async (item: string, status: string) => {
     return await axios
     .post("/todo", {
         headers: {
             "Content-Type": "application-json",
         },
         data: {
-            item,
+            item: item,
+            status: status,
         }
     })
 }
