@@ -36,24 +36,31 @@ const ToDoInput = () => {
               const nextId: string = (todos.length + 1).toString();
 
               const todoInput: InputTodo = {
-                id: nextId,
+                // id: nextId,
                 item,
                 status: "NOT_DONE",
               };
 
+              
               if(todoInput.status !== undefined){
               requestPost(item, todoInput?.status)
               .then((res) => {    
+                requestGetTodo()
+                .then((res) => {
+                  setTodos(res.data)
+                  console.log(res.data)
+                  setTodos([...todos, todoInput]);
+                }) 
                   console.log(res.data)
                   console.log(todos)
               })
               .catch((err) => {
                   console.log(err);
               })
-          
-              setTodos([...todos, todoInput]);
+
               setItems('');
-          }}}
+          }
+        }}
     >
         <input
             className='w-80 p-2 border-2 border-gray-400 rounded-md bg-white text-black'
